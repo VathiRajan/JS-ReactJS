@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Person.css'
 //In old versions of React's functional component, it didnot support state. 
 //But with Hooks, we could have state inside a functioanl component

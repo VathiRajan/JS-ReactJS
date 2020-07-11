@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import './App.css';
 import Person from './Person/Person';
+import UserInput from './UserInput/UserInput';
+import UserOutput from './UserOutput/UserOutput';
 
 const App = props => {
 
@@ -94,6 +96,11 @@ const App = props => {
         click={switchNameHandler.bind(this, "Zira")} />
 
       <button onClick={() => switchNameHandler("ZIra **")}>Corrupt Name</button>
+      <UserInput></UserInput>
+      <UserOutput username="Vathirajan"></UserOutput>
+      <UserOutput username="Vathirajan"></UserOutput>
+      <UserOutput username="Vathirajan"></UserOutput>
+
     </div>
   );
 }
