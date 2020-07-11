@@ -27,7 +27,7 @@ const App = props => {
         age: 34
       }
     ],
-
+    showPerson: false
   });
   const [otherState, setOtherState] = useState("Other state")
 
@@ -56,6 +56,11 @@ const App = props => {
       }
     )
   }
+
+  const togglePersonHandler = () => {
+
+  }
+
 
   const nameChangeHandler = (event) => {
     setPersonState(
@@ -88,23 +93,28 @@ const App = props => {
       name: event.target.value
     })
   }
+  //
   return (
     <div className="App" >
       <h1>Hello React Developer</h1>
-      <Person
-        name={personState.persons[0].name}
-        age={personState.persons[0].age}
-        click={switchNameHandler.bind(this, "Simran")}> Alice Name</Person>
-      <Person
-        name={personState.persons[1].name}
-        age={personState.persons[1].age}
-        change={nameChangeHandler} />
-      <Person
-        name={personState.persons[2].name}
-        age={personState.persons[2].age}
-        click={switchNameHandler.bind(this, "Zira")} />
-
-      <button onClick={() => switchNameHandler("ZIra **")}>Corrupt Name</button>
+      {
+        personState.showPersons ?
+          <div>
+            <Person
+              name={personState.persons[0].name}
+              age={personState.persons[0].age}
+              click={switchNameHandler.bind(this, "Simran")}> Alice Name</Person>
+            <Person
+              name={personState.persons[1].name}
+              age={personState.persons[1].age}
+              change={nameChangeHandler} />
+            <Person
+              name={personState.persons[2].name}
+              age={personState.persons[2].age}
+              click={switchNameHandler.bind(this, "Zira")} />
+          </div>
+          : null}
+      <button onClick={togglePersonHandler}>Corrupt Name</button>
 
 
       <UserInput changeName={assignmentNameChange} name={nameState.name}></UserInput>
