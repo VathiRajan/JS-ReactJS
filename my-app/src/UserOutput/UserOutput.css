@@ -1,0 +1,12 @@
+
+
+.output{
+  text-align: center;
+  border: 2px solid black;
+  margin:auto;
+  padding: 5px 5px 5px 5px;
+  width:40%;
+  background-color: turquoise;
+  border-style: groove;
+  
+}

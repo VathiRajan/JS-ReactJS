@@ -79,6 +79,15 @@ const App = props => {
     )
   };
 
+  const [nameState, setnameState] = useState({
+    name: "Max"
+
+  });
+  const assignmentNameChange = (event) => {
+    setnameState({
+      name: event.target.value
+    })
+  }
   return (
     <div className="App" >
       <h1>Hello React Developer</h1>
@@ -96,8 +105,10 @@ const App = props => {
         click={switchNameHandler.bind(this, "Zira")} />
 
       <button onClick={() => switchNameHandler("ZIra **")}>Corrupt Name</button>
-      <UserInput></UserInput>
-      <UserOutput username="Vathirajan"></UserOutput>
+
+
+      <UserInput changeName={assignmentNameChange} name={nameState.name}></UserInput>
+      <UserOutput username={nameState.name}></UserOutput>
       <UserOutput username="Vathirajan"></UserOutput>
       <UserOutput username="Vathirajan"></UserOutput>
 
