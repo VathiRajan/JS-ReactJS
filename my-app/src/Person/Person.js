@@ -9,8 +9,9 @@ const person = (props) => {
         <div className="Person">
             <p onClick={props.delete}>I'am a Person and I am {props.name} and I am {props.age} years old working in CSS</p>
             <p >{props.children}</p>
+            <input type="text" onChange={props.changed} value={props.name} />
+
             <button onClick={props.delete}>Delete</button>
-            <input type="text" onChange={props.change} value={props.name}>Name: </input>
 
         </div>)
 }

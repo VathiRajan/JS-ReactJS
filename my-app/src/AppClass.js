@@ -57,15 +57,17 @@ class AppClass extends Component {
 
     nameChangeHandler = (event, i) => {
         const personIndex = this.state.persons.findIndex(p => {
-            return p.i === i
+            return p.id === i
         })
         const person = { ...this.state.persons[personIndex] }
         //alternative ; const person = Object.assign({}, this.state.persons[personIndex])
         person.name = event.target.value
+        const persons = [...this.state.persons]
+        persons[personIndex] = person
+
         this.setState(
             {
-                persons: person
-
+                persons: persons
             }
         )
     };
@@ -77,8 +79,29 @@ class AppClass extends Component {
         })
     }
     render() {
+        const style = {
+            color: "white",
+            backgroundColor: "green",
+            cursor: "pointer",
+            padding: "10px",
+            border: "2px solid red"
+
+        }
+        const classes = []
+        if (this.state.persons.length <= 2) {
+            classes.push('red')
+        }
+        if (this.state.persons.length <= 1) {
+
+            classes.push(' bold')
+
+        }
+
         let persons = null;
         if (this.state.showPerson) {
+            style.backgroundColor = "red"
+            style.border = "3px solid green"
+
             persons = (
                 <div>
                     {
@@ -88,11 +111,12 @@ class AppClass extends Component {
                                 return (
                                     <Person
                                         key={i}
-                                        name={a.name}
+
                                         age={a.age}
                                         id={a.id}
-                                        change={(event) => this.nameChangeHandler(event, a.id)}
-                                        delete={() => this.deletePersonHandler(i)}> Alias Name
+                                        changed={(event) => this.nameChangeHandler(event, a.id)}
+                                        delete={() => this.deletePersonHandler(i)}
+                                        name={a.name}> Alias Name
                                     </Person>)
                             }
                         )
@@ -108,7 +132,8 @@ class AppClass extends Component {
 
             <div className="App" >
                 <h1>Hello React Developer</h1>
-                <button onClick={this.togglePersonHandler}>Toggle Person</button>
+                <p className={classes}> Knowledge is Power. Golang + React</p>
+                <button style={style} onClick={this.togglePersonHandler}>Toggle Person</button>
 
                 {persons}
 
