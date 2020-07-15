@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import styled from 'styled-components';
 import './App.css';
 import Person from './Person/Person';
 import UserInput from './UserInput/UserInput';
@@ -84,7 +84,11 @@ class AppClass extends Component {
             backgroundColor: "green",
             cursor: "pointer",
             padding: "10px",
-            border: "2px solid red"
+            border: "2px solid red",
+            ':hover': {
+                backgroundColor: 'lightgreen',
+                color: 'black'
+            }
 
         }
         const classes = []
@@ -101,7 +105,10 @@ class AppClass extends Component {
         if (this.state.showPerson) {
             style.backgroundColor = "red"
             style.border = "3px solid green"
-
+            style[':hover'] = {
+                backgroundColor: 'salmon',
+                color: 'black'
+            }
             persons = (
                 <div>
                     {
@@ -111,7 +118,6 @@ class AppClass extends Component {
                                 return (
                                     <Person
                                         key={i}
-
                                         age={a.age}
                                         id={a.id}
                                         changed={(event) => this.nameChangeHandler(event, a.id)}
@@ -134,13 +140,9 @@ class AppClass extends Component {
                 <h1>Hello React Developer</h1>
                 <p className={classes}> Knowledge is Power. Golang + React</p>
                 <button style={style} onClick={this.togglePersonHandler}>Toggle Person</button>
-
                 {persons}
-
-
-
-
             </div>
+
         );
     }
 }
